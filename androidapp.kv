@@ -4,6 +4,9 @@
     orientation: 'vertical'
     spacing: 1
 
+    Label:
+        text: 'panel_label'
+
     MenuItem:
         text: 'entry one'
 
@@ -12,6 +15,10 @@
 
     MenuItem:
         text: 'entry three'
+
+    MenuItem:
+        text: 'entry four'
+
 
 
 <AppActionBar>:
@@ -72,3 +79,21 @@
 
     Label:
         text: 'application'
+
+<PageFour>:
+    orientation: 'vertical'
+    spacing: 1
+
+    AppActionBar:
+        size_hint: (1., 0.1)
+
+    BoxLayout:
+        orientation: 'horizontal'
+        Label:
+            text: 'Pagefour'
+
+        Button:
+            id: button2
+            #button_name: button2
+            text: 'Test'
+            size: (10,100)

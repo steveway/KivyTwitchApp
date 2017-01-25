@@ -29,6 +29,7 @@ shown instead of the first main_panel
 SidePanel_AppMenu = {'entry one': ['on_one', None],
                      'entry two': ['on_two', None],
                      'entry three': ['on_three', None],
+                     'entry four': ['on_four', None],
                      }
 id_AppMenu_METHOD = 0
 id_AppMenu_PANEL = 1
@@ -89,6 +90,10 @@ class PageThree(FloatLayout):
     pass
 
 
+class PageFour(BoxLayout):
+    pass
+
+
 class AppButton(Button):
     button_name = ObjectProperty(None)
 
@@ -145,13 +150,20 @@ class AndroidApp(App):
         print 'three... exec'
         self._switch_main_page('entry three',  PageThree)
 
+    def on_four(self):
+        print 'four... exec'
+        self._switch_main_page('entry four',  PageFour)
+
     def _switch_main_page(self, key,  panel):
         self.navigationdrawer.toggle_state()
         if not SidePanel_AppMenu[key][id_AppMenu_PANEL]:
             SidePanel_AppMenu[key][id_AppMenu_PANEL] = panel()
+
         main_panel = SidePanel_AppMenu[key][id_AppMenu_PANEL]
-        self.navigationdrawer.remove_widget(self.main_panel)    # Without this the main_panel
-        self.navigationdrawer.add_widget(main_panel)            # will not update currently.
+        self.navigationdrawer.remove_widget(self.main_panel)  # Without this the main_panel
+        self.navigationdrawer.add_widget(main_panel)  # will not update currently.
+
+        print key, id_AppMenu_PANEL, type(main_panel)
         self.main_panel = main_panel
 
 
